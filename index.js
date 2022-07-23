@@ -5,12 +5,14 @@ const port = process.env.PORT
 const bodyParser = require("body-parser");
 const UserRouter = require('./routes/user.route');
 const cors = require('cors')
+
+const mongoose = require('mongoose');
+const PurchaseRouter = require('./routes/purchase.route');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cors({origin: '*'}))
 app.use('/user', UserRouter)
-
-const mongoose = require('mongoose');
+app.use('/purchases', PurchaseRouter)
 mongoose.connect(process.env.URI, (err, connection)=>{
     if(err){
         console.log('Database Error')
