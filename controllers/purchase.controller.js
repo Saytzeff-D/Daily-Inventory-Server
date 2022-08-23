@@ -17,6 +17,7 @@ const getPurchases = (req, res)=>{
         if (!err) {
             res.json({purchases})
         } else {
+        console.log(err)
             res.status(300).json({message: 'Server Error'})
         }
     })
