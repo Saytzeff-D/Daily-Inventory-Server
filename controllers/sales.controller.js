@@ -26,4 +26,14 @@ const addSales = (req, res)=>{
     })
 }
 
-module.exports = { addSales }
+const fetchSales = (req, res)=>{
+    SalesModel.find((err, sales)=>{
+        if(!err){
+            res.send({status: true, sales})
+        }else{
+            res.send({status: false})
+        }
+    })
+}
+
+module.exports = { addSales, fetchSales }
